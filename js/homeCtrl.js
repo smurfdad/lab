@@ -4,7 +4,6 @@
 */
 
 app.controller("homeCtrl", function ($scope,  $timeout, $interval, $log) {
-  $log.info("En el controlador");
   $scope.experimentos = new Array();
   $scope.experimentos.push({"nombre":"Plugin", "href":"nexus/", "descripcion": "Utilizacion de un plugin jquery"});
   var _pilaLlamadasCargando = 0;
