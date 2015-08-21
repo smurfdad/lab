@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="labApp" lang="es">
     <head>
-        <title>Smurf Dad´s Lab</title>
+        <title>Smurf Dad&#39;s Lab</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-blue.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
@@ -10,8 +10,8 @@
         <h1>Laboratorio</h1>
         <div class="mdl-spinner mdl-js-spinner is-active" ng-if="isCargando()"></div>
         <p>Lo que aqu&iacute; haya son pruebas de concepto, asi que pueden desaparecer en cualquier momento</p>
-        <div class="mdl-grid" ng-if="experimentos.length > 0">
-            <div ng-repeat="experimento in experimentos">
+        <div class="mdl-grid" ng-if="experimentosSize() > 0">
+            <div ng-repeat="(key, experimento) in experimentos">
                 <div class="mdl-card mdl-shadow--4dp">
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">{{ experimento.nombre }}</h2>
