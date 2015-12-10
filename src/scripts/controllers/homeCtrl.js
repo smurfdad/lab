@@ -1,6 +1,7 @@
 /**
 * Ejemplo de controlado AngularJS
 *
+*
 */
 app.controller("homeCtrl", function ($scope,  $timeout, $interval, $log) {
 
