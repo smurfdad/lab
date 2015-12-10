@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="labApp" lang="es">
+    <head>
+        <title>Smurf Dad&#39;s Lab</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-blue.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+	</head>
+    <body ng-controller="homeCtrl">
+        <h1>Laboratorio</h1>
+        <div class="mdl-spinner mdl-js-spinner is-active" ng-if="isCargando()"></div>
+        <p>Lo que aqu&iacute; haya son pruebas de concepto, asi que pueden desaparecer en cualquier momento</p>
+		<p>Probando publicacion automatica</p>
+        <div class="mdl-grid" ng-if="experimentosSize() > 0">
+            <div ng-repeat="(key, experimento) in experimentos">
+                <div class="mdl-card mdl-shadow--4dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">{{ experimento.nombre }}</h2>
+					</div>
+                    <div class="mdl-card__supporting-text">
+                        {{experimento.descripcion}}
+					</div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a href="{{ experimento.href }}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Ver el experimento
+						</a>
+					</div>
+				</div>
+                <br>
+			</div>
+		</div>
+        <p ng-if="experimentosSize() === 0">No hay experimentos declarados</p>
+        <script src="http://cdn.smurfdad.es/assets/firebase/2.2.7/firebase.min.js"></script>
+        <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+        <script src="libs/app.js"></script>
+        <script src="libs/controllers/homeCtrl.js"></script>
+	</body>
+</html>
