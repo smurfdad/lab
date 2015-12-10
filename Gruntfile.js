@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     // Configuramos Grunt
 	var fecha = new Date();
 	var tagVersion = "".concat(fecha.getFullYear(),"-",fecha.getMonth(),"-",fecha.getDate(),".",fecha.getHours(),".",fecha.getMinutes(),".",fecha.getSeconds());
-	var commitMessage = "Actualizacion automatica "+tagVersion;
+	var commitMessage = "Publicacion automatica "+tagVersion;
     grunt.initConfig({
 		clean: ["dist/*"],
 		copy:{
