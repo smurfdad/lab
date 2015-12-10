@@ -4,14 +4,14 @@ module.exports = function(grunt) {
     var tagVersion = "".concat(fecha.getFullYear(),"-",fecha.getMonth(),"-",fecha.getDate(),".",fecha.getHours(),".",fecha.getMinutes(),".",fecha.getSeconds());
     var commitMessage = "Publicacion automatica "+tagVersion;
     grunt.initConfig({
-		less: {
+        less: {
             main: {
                 files: {
                     "src/styles/style.css": "src/less/style.less"
                 }
             }
-        },	
-		postcss: {
+        },  
+        postcss: {
             options: {
                 processors: [
                     require("autoprefixer")(), // add vendor prefixes
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             main: {
                 src: "src/styles/*.css"
             }
-        },		
+        },      
         clean: ["dist/*"],
         copy:{
             html: {
@@ -43,8 +43,8 @@ module.exports = function(grunt) {
                 dest: 'dist/',
             }
         },
-		//Configuracion para que todos los archivos js se construyan en uno unico
-		concat: {
+        //Configuracion para que todos los archivos js se construyan en uno unico
+        concat: {
             options: {
                 separator: ';',
             },
@@ -55,15 +55,15 @@ module.exports = function(grunt) {
                 dest: 'src/libs/app.js',
             }
         },
-		uglify: {
+        uglify: {
             main: {
                 files: {
                     'src/libs/app.js': ['src/libs/app.js']
                 }
             }
-        },		
-		//Configuracion del observador de cambios y desencadenamiento de tareas
-		watch: {
+        },      
+        //Configuracion del observador de cambios y desencadenamiento de tareas
+        watch: {
             options: {
                 spawn: true
             },
@@ -73,22 +73,22 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ["src/styles/**/*.css"],
-                tasks: ["copy:styles"]			
+                tasks: ["copy:styles"]          
             },
-			applicationjs: {
+            applicationjs: {
                 files: ["src/scripts/**/*.js"],
-                tasks: ["concat","uglify"]			
-			},
-			html: {
+                tasks: ["concat","uglify"]          
+            },
+            html: {
                 files: ["src/**/*.html"],
-                tasks: ["copy:html"]			
-			},
+                tasks: ["copy:html"]            
+            },
             libs: {
                 files: ["src/libs/**/*.js"],
-                tasks: ["copy:libs"]			
-            }			
+                tasks: ["copy:libs"]            
+            }           
         },
-		//Definicion para publicar en GitHub Pages el contenido del directorio "dist"
+        //Definicion para publicar en GitHub Pages el contenido del directorio "dist"
         "gh-pages": {
             options: {
                 base: "dist",
@@ -103,14 +103,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks("grunt-postcss");
-	grunt.loadNpmTasks("grunt-contrib-less");
-	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-postcss");
+    grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks("grunt-contrib-concat");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
+    grunt.loadNpmTasks("grunt-contrib-watch");
 
     // Definimos las tareas disponibles
-	grunt.registerTask("default", ["clean", "less", "postcss","copy:styles","concat","uglify","copy:html","copy:libs","watch"]);
+    grunt.registerTask("default", ["clean", "less", "postcss","copy:styles","concat","uglify","copy:html","copy:libs","watch"]);
     grunt.registerTask("publish", ["clean", "less", "postcss","copy:styles","concat","uglify","copy:html","copy:libs","gh-pages"]);
 
 };
